@@ -1,6 +1,6 @@
 <?php
 
-class Guerrier {
+class Archer {
     public $nom;
     public $pv;
 
@@ -15,12 +15,12 @@ class Guerrier {
 
     public function attack() {
         // Simule une attaque basique, retourne des dégâts simulés
-        return rand(10, 20);
+        return rand(5, 15);
     }
 
     public function special() {
-        // Action spéciale pouvant infliger des dégâts importants
-        return rand(15, 30);
+        // Action spéciale pouvant faire plus de dégâts
+        return rand(10, 25);
     }
 
     public function recevoirDegats($degats) {
@@ -30,5 +30,4 @@ class Guerrier {
         }
     }
 }
-
 
