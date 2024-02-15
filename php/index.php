@@ -51,6 +51,72 @@ $pass = "admin"; // Remplacez par votre mot de passe
 
 //-----------------------------------------------PHP------------------------------------------------------------
 
+// Inclure les fichiers de classes
+include_once 'Personnage.php';
+include_once 'Guerrier.php';
+include_once 'Mage.php';
+include_once 'Pretre.php';
+include_once 'Archer.php';
+
+session_start();
+
+// Initialisation des personnages
+if (!isset($_SESSION['personnages'])) {
+    $_SESSION['personnages'] = [
+        'joueur1' => new Guerrier(),
+        'joueur2' => new Mage(),
+        // Ajoutez d'autres personnages au besoin
+    ];
+}
+
+// Traitement des actions du formulaire
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $action = $_POST['action'];
+    $cible = $_POST['cible'];
+
+    // Récupérer les personnages de la session
+    $personnages = $_SESSION['personnages'];
+    $joueur1 = $personnages['joueur1'];
+    $joueur2 = $personnages['joueur2'];
+
+    // Effectuer les actions
+    switch ($action) {
+        case 'attaquer':
+            $joueur1->attaquer($joueur2);
+            break;
+        case 'capaciteSpeciale':
+            $joueur1->capaciteSpeciale($joueur2);
+            break;
+        // Ajoutez d'autres cas au besoin
+    }
+
+    // Sauvegarder l'état des personnages
+    $_SESSION['personnages'] = $personnages;
+
+    // Redirection pour éviter la resoumission du formulaire
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    exit;
+}
+
+// Affichage de l'état du jeu
+$personnages = $_SESSION['personnages'];
+echo "<p>Joueur 1: {$personnages['joueur1']->getPointsDeVie()} PV</p>";
+echo "<p>Joueur 2: {$personnages['joueur2']->getPointsDeVie()} PV</p>";
+
+// Affichage des formulaires d'action
+echo '<form method="POST">
+        <input type="hidden" name="action" value="attaquer">
+        <input type="hidden" name="cible" value="joueur2">
+        <input type="submit" value="Attaquer">
+      </form>';
+echo '<form method="POST">
+        <input type="hidden" name="action" value="capaciteSpeciale">
+        <input type="hidden" name="cible" value="joueur2">
+        <input type="submit" value="Capacité Spéciale">
+      </form>';
+
+// Ajoutez ici d'autres formulaires pour les autres actions et personnages
+
 
 class Personnage {
     protected $pointsDeVie;
