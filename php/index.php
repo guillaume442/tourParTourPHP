@@ -1,6 +1,17 @@
 <?php
 session_start();
+require_once 'Archer.php';
+require_once 'Guerrier.php';
 
+if (!isset($_SESSION['joueur1'])) {
+    $_SESSION['joueur1'] = serialize(new Archer("Archer", 100));
+}
+if (!isset($_SESSION['joueur2'])) {
+    $_SESSION['joueur2'] = serialize(new Guerrier("Guerrier", 100));
+}
+
+$joueur1 = unserialize($_SESSION['joueur1']);
+$joueur2 = unserialize($_SESSION['joueur2']);
 ?>
 
 <!DOCTYPE html>
