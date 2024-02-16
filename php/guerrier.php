@@ -1,33 +1,21 @@
 <?php
 
-class Guerrier {
-    public $nom;
-    public $pv;
+require_once 'Personnage.php';
 
+class Guerrier extends Personnage {
+    
     public function __construct($nom, $pv) {
-        $this->nom = $nom;
-        $this->pv = $pv;
-    }
-
-    public function getPv() {
-        return $this->pv;
+        parent::__construct($nom, $pv);
     }
 
     public function attack() {
-        // Simule une attaque basique, retourne des dégâts simulés
-        return rand(10, 15);
-    }
-
-    public function special() {
-        // Action spéciale pouvant infliger des dégâts importants
+        // Simule une attaque basique, retourne des dégâts simulés pour le Guerrier
         return rand(10, 20);
     }
 
-    public function recevoirDegats($degats) {
-        $this->pv -= $degats;
-        if ($this->pv < 0) {
-            $this->pv = 0;
-        }
+    public function special() {
+        // Action spéciale pouvant infliger plus de dégâts pour le Guerrier
+        return rand(15, 30);
     }
 }
 

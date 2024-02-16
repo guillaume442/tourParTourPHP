@@ -1,7 +1,10 @@
 <?php
 session_start();
+require_once 'Personnage.php';
 require_once 'Archer.php';
 require_once 'Guerrier.php';
+require_once 'Pretre.php';
+require_once 'Mage.php';
 
 // Réinitialisez les objets joueur et stockez-les à nouveau dans la session à chaque chargement de la page
 $_SESSION['joueur1'] = serialize(new Archer("Archer", 100));
@@ -17,6 +20,7 @@ $joueur2 = unserialize($_SESSION['joueur2']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour par tour</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -26,6 +30,8 @@ $joueur2 = unserialize($_SESSION['joueur2']);
         <select name="classeJoueur1" id="classeJoueur1">
             <option value="Archer">Archer</option>
             <option value="Guerrier">Guerrier</option>
+            <option value="Pretre">Prêtre</option>
+            <option value="Mage">Mage</option>
         </select>
     </div>
     <div>
@@ -33,6 +39,8 @@ $joueur2 = unserialize($_SESSION['joueur2']);
         <select name="classeJoueur2" id="classeJoueur2">
             <option value="Archer">Archer</option>
             <option value="Guerrier">Guerrier</option>
+            <option value="Pretre">Prêtre</option>
+            <option value="Mage">Mage</option>
         </select>
     </div>
     <button type="button" onclick="initialiserJeu()">Commencer le Jeu</button>

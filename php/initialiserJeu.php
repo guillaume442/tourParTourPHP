@@ -1,7 +1,11 @@
 <?php
 session_start();
+
+require_once 'Personnage.php';
 require_once 'Archer.php';
 require_once 'Guerrier.php';
+require_once 'Pretre.php';
+require_once 'Mage.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $classeJoueur1 = $_POST['classeJoueur1'];

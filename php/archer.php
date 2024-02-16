@@ -1,16 +1,11 @@
 <?php
 
-class Archer {
-    public $nom;
-    public $pv;
+require_once 'Personnage.php';
 
+class Archer extends Personnage {
+    
     public function __construct($nom, $pv) {
-        $this->nom = $nom;
-        $this->pv = $pv;
-    }
-
-    public function getPv() {
-        return $this->pv;
+        parent::__construct($nom, $pv); // Appel au constructeur parent
     }
 
     public function attack() {
@@ -23,11 +18,7 @@ class Archer {
         return rand(10, 20);
     }
 
-    public function recevoirDegats($degats) {
-        $this->pv -= $degats;
-        if ($this->pv < 0) {
-            $this->pv = 0;
-        }
-    }
+    // Pas besoin de redéfinir recevoirDegats si c'est la même logique que dans Personnage
 }
+
 
