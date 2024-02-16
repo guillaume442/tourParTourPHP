@@ -20,7 +20,7 @@ class Archer {
 
     public function special() {
         // Action spéciale pouvant faire plus de dégâts
-        return rand(10, 25);
+        return rand(10, 20);
     }
 
     public function recevoirDegats($degats) {

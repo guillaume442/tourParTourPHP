@@ -24,7 +24,24 @@ function executerAction(joueur, action) {
     xhr.send(data);
 }
 
+function initialiserJeu() {
+    var classeJoueur1 = document.getElementById('classeJoueur1').value;
+    var classeJoueur2 = document.getElementById('classeJoueur2').value;
 
-
-
-
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "initialiserJeu.php", true); // Assurez-vous d'avoir ce fichier PHP prêt à gérer cette requête
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onload = function() {
+        if (this.status === 200) {
+            // Mettre à jour l'affichage avec les classes choisies
+            document.getElementById('classeJoueur1Affiche').textContent = classeJoueur1;
+            document.getElementById('classeJoueur2Affiche').textContent = classeJoueur2;
+    
+            // Afficher les options de jeu
+            document.getElementById('jeu').style.display = 'block';
+            // Masquer le formulaire de choix de classe
+            document.getElementById('choixClasse').style.display = 'none';
+        }
+    };
+    xhr.send("classeJoueur1=" + encodeURIComponent(classeJoueur1) + "&classeJoueur2=" + encodeURIComponent(classeJoueur2));
+}
