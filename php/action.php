@@ -11,6 +11,7 @@ session_start();
 if (!isset($_SESSION['tour'])) {
     $_SESSION['tour'] = 'joueur1';
 }
+
 // Vérifier si les objets joueur ont déjà été instanciés et stockés en session
 if (!isset($_SESSION['joueur1'])) {
     $joueur1 = new Archer("Archer", 100);
@@ -32,11 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_POST['action']; // 'attack' ou 'special'
     $degats = 0;
 
-        // Assurez-vous que c'est bien le tour du joueur avant de permettre l'action
-        if ($_SESSION['tour'] !== $joueurCible) {
-            echo json_encode(['erreur' => 'Ce n\'est pas votre tour']);
-            exit;
-        }
+    if ($_SESSION['tour'] !== $joueurCible) {
+        echo json_encode(['erreur' => 'Ce n\'est pas votre tour']);
+        exit;
+    }
 
     if ($action == 'attack') {
         $degats = rand(5, 15);
@@ -53,9 +53,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['joueur1'] = serialize($joueur1);
     $_SESSION['joueur2'] = serialize($joueur2);
 
+    // Détermination du vainqueur
+    $winner = null;
+    if ($joueur1->getPv() <= 0) {
+        $winner = 'Joueur 2 est vainqueur!';
+    } elseif ($joueur2->getPv() <= 0) {
+        $winner = 'Joueur 1 est vainqueur!';
+    }
+
     $response = [
         'joueur1_pv' => $joueur1->getPv(),
         'joueur2_pv' => $joueur2->getPv(),
+        'winner' => $winner
     ];
 
     $_SESSION['tour'] = $_SESSION['tour'] === 'joueur1' ? 'joueur2' : 'joueur1';

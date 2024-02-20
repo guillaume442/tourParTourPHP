@@ -24,6 +24,9 @@ $joueur2 = unserialize($_SESSION['joueur2']);
 </head>
 <body>
 
+<button id="btnMenuPermanent" onclick="window.location.reload()" 
+style="position: fixed; top: 10px; right: 10px;">Choix des personnages</button>
+
 <form id="choixClasse">
     <div>
         <label for="classeJoueur1">Joueur 1:</label>
@@ -62,6 +65,9 @@ $joueur2 = unserialize($_SESSION['joueur2']);
         <button type="button" onclick="executerAction('joueur2', 'special')">Spécial</button>
     </div>
 </div>
+
+<!-- <button id="btnMenu" style="display: none;" onclick="window.location.reload()">Menu</button> -->
+
 
 <script src="script.js"></script>
 </body>

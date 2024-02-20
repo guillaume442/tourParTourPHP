@@ -6,6 +6,20 @@ body {
     background-color: #f4f4f4;
 }
 
+#btnMenuPermanent {
+    padding: 10px 20px;
+    background-color: #e76bb1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btnMenuPermanent:hover {
+    background-color: #f901a2;
+}
+
+
 #choixClasse, #jeu {
     margin-top: 50px;
 }
