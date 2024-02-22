@@ -4,6 +4,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    background-image: url(img/digital-art-landscape-fantasy-art-1480213-wallhere.com.jpg);
+    background-size: cover;
 }
 
 #btnMenuPermanent {
