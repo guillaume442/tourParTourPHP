@@ -12,7 +12,7 @@ if (!isset($_SESSION['tour'])) {
     $_SESSION['tour'] = 'joueur1';
 }
 
-// Vérifier si les objets joueur ont déjà été instanciés et stockés en session
+
 if (!isset($_SESSION['joueur1'])) {
     $joueur1 = new Archer("Archer", 100);
     $_SESSION['joueur1'] = serialize($joueur1);
@@ -27,7 +27,7 @@ if (!isset($_SESSION['joueur2'])) {
     $joueur2 = unserialize($_SESSION['joueur2']);
 }
 
-// Traitement de la requête POST
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $joueurCible = $_POST['joueur']; // 'joueur1' ou 'joueur2'
     $action = $_POST['action']; // 'attack' ou 'special'
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['joueur1'] = serialize($joueur1);
     $_SESSION['joueur2'] = serialize($joueur2);
 
-    // Détermination du vainqueur
+
     $winner = null;
     if ($joueur1->getPv() <= 0) {
         $winner = 'Joueur 2 est vainqueur!';

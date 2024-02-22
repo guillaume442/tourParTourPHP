@@ -6,7 +6,7 @@ require_once 'Guerrier.php';
 require_once 'Pretre.php';
 require_once 'Mage.php';
 
-// Réinitialisez les objets joueur et stockez-les à nouveau dans la session à chaque chargement de la page
+
 $_SESSION['joueur1'] = serialize(new Archer("Archer", 100));
 $_SESSION['joueur2'] = serialize(new Guerrier("Guerrier", 100));
 
@@ -49,7 +49,7 @@ style="position: fixed; top: 10px; right: 10px;">Choix des personnages</button>
     <button type="button" onclick="initialiserJeu()">Commencer le Jeu</button>
 </form>
 
-<!-- Conteneur pour les options de jeu, caché initialement -->
+
 <div id="jeu" style="display: none;">
     <div id="joueur1" class="joueur">
         <h2>Joueur 1: <span id="classeJoueur1Affiche">Archer</span></h2>
@@ -65,8 +65,6 @@ style="position: fixed; top: 10px; right: 10px;">Choix des personnages</button>
         <button type="button" onclick="executerAction('joueur2', 'special')">Spécial</button>
     </div>
 </div>
-
-<!-- <button id="btnMenu" style="display: none;" onclick="window.location.reload()">Menu</button> -->
 
 
 <script src="script.js"></script>

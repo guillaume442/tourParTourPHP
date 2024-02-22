@@ -11,31 +11,31 @@ function executerAction(joueur, action) {
                 document.getElementById('pvJoueur1').textContent = reponse.joueur1_pv;
                 document.getElementById('pvJoueur2').textContent = reponse.joueur2_pv;
     
-                // Désactivez tous les boutons après une action, sauf le bouton "Menu"
+
                 document.querySelectorAll('button').forEach(function(btn) {
-                    if (btn.id !== 'btnMenuPermanent') { // Excluez le bouton "Menu" en vérifiant son ID
+                    if (btn.id !== 'btnMenuPermanent') {
                         btn.disabled = true;
                     }
                 });
     
-                // Réactivez les boutons pour l'autre joueur, sauf le bouton "Menu"
+
                 var boutonsAdversaire = joueur === 'joueur1' ? 'joueur2' : 'joueur1';
                 document.querySelectorAll('#' + boutonsAdversaire + ' button').forEach(function(btn) {
-                    if (btn.id !== 'btnMenuPermanent') { // Excluez le bouton "Menu" en vérifiant son ID
+                    if (btn.id !== 'btnMenuPermanent') {
                         btn.disabled = false;
                     }
                 });
     
-                // Vérifier si un vainqueur est déterminé et afficher un message
+
                 if (reponse.winner) {
                     alert(reponse.winner);
-                    // Désactivez tous les boutons pour empêcher d'autres actions, sauf le bouton "Menu"
+
                     document.querySelectorAll('button').forEach(function(btn) {
-                        if (btn.id !== 'btnMenuPermanent') { // Excluez le bouton "Menu" en vérifiant son ID
+                        if (btn.id !== 'btnMenuPermanent') {
                             btn.disabled = true;
                         }
                     });
-                    // Assurez-vous que le bouton "Menu" reste activé
+
                     document.getElementById('btnMenuPermanent').disabled = false;
                 }
     
@@ -52,7 +52,7 @@ function executerAction(joueur, action) {
     
 }
 
-// La fonction initialiserJeu reste inchangée
+
 function initialiserJeu() {
     var classeJoueur1 = document.getElementById('classeJoueur1').value;
     var classeJoueur2 = document.getElementById('classeJoueur2').value;

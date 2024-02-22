@@ -20,12 +20,12 @@ class Personnage {
         }
     }
 
-    // Ces méthodes pourraient être abstraites si chaque classe enfant doit les implémenter différemment
+
     public function attack() {
-        // Implémentation par défaut ou méthode abstraite
+
     }
 
     public function special() {
-        // Implémentation par défaut ou méthode abstraite
+
     }
 }
